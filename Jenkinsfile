@@ -1,15 +1,17 @@
 pipeline {
     agent any
-     /*tools {
-      maven 'Maven'
-      jdk 'default'
-    }*/
+    
     stages {
+        
       stage ('Checkout') {
         steps {
                 git 'https://github.com/devops-quick-course/java-hello-world'
-            }
-       }
+                tools {
+                           maven 'Maven'
+                           jdk 'default'
+                       }
+             }
+           }
         stage('Build') {
             steps {
                 echo 'maven clean'
