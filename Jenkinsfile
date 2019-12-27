@@ -6,15 +6,16 @@ pipeline {
               }
     stages {
           stage ('Checkout') {
-        steps {
-                git 'https://github.com/devops-quick-course/java-hello-world'
+              steps {
+                           git 'https://github.com/devops-quick-course/java-hello-world'
+                    }
               }
-           }
-        stage('Build') {
-            steps {
-                echo 'maven clean'
-                //ABC indicates the folder name where the pom.xml file resides
-                bat ' mvn -f pom.xml clean install'  
+          stage('Build') {
+              steps {
+                     echo 'maven clean'
+                    //ABC indicates the folder name where the pom.xml file resides
+                     bat ' mvn -f pom.xml clean install'  
+                 }
             }
             /*post {
                 success {
@@ -23,10 +24,8 @@ pipeline {
             }*/
          stage ('Test') {
               steps {
-                maven 'mvn test'
+                       maven 'mvn test'
+                    }
               }
-           }
-        }
-        
-    }
+        } 
 }
