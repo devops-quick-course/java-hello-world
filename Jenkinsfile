@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven'
-        jdk 'default'
-    }
+    // tools {
+    //   maven 'Maven'
+    //   jdk 'default'
+    //}
     stages {
       stage ('Checkout') {
         steps {
@@ -14,13 +14,13 @@ pipeline {
             steps {
                 echo 'maven clean'
                 //ABC indicates the folder name where the pom.xml file resides
-                bat ' mvn -B https://github.com/devops-quick-course/java-hello-world clean install'  
+                bat ' mvn -B https://github.com/devops-quick-course/java-hello-world/pom.xml clean install'  
             }
-            post {
+            /*post {
                 success {
                     echo 'Now Archiving'
                 }
-            }
+            }*/
         }
     }
 }
