@@ -1,2 +1,2 @@
-<h1> Hello, Welcome to Simple DevOps Project !!   </h1>
-<h2> This is the first checkin </h2>
+<h1> Welcome to DevOps Quick Course !! </h1>
+<h2> First Deployment on Tomcat Server </h2>
