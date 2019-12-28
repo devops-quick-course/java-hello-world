@@ -42,7 +42,7 @@ pipeline {
              }
         Stage ('Deploy Tomcat') {
             steps{
-                curl --upload-file webapp.war "http://tomcat:tomcat@localhost:9090/manager/deploy?path=/webapp"
+                bat 'curl -T "webapp.war" "http://tomcat:tomcat@localhost:9090/manager/deploy?path=/webapp" '
             }
         }
     }     
