@@ -43,7 +43,7 @@ pipeline {
             stage ('Deploy Tomcat') {
               steps {
                 //bat 'curl -T "webapp.war" "http://tomcat:tomcat@localhost:9090/manager/deploy?path=/webapp" '
-                  bat '''copy C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-Jenkinsfile\\webapp\\target\\webapp.war C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'''
+                  bat 'copy C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-Jenkinsfile\\webapp\\target\\webapp.war C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'
             }
         }
     }     
