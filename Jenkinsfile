@@ -27,5 +27,18 @@ pipeline {
                        bat 'mvn test'
                     }
               }
+            stage ('Artifactory Deploy'){
+                steps{
+                  script {
+                     def server = Artifactory.server('art-1')
+                     def rtMaven = Artifactory.newMavenBuild()
+                    //rtMaven.resolver server: server, releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot'
+                    rtMaven.deployer server: server, releaseRepo: 'devops-quick-course-snapshots', snapshotRepo: 'devops-quick-course-snapshots'
+                    rtMaven.tool = 'Maven'
+                    def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+                     server.publishBuildInfo buildInfo
+                   }
+               }
+             }  
         } 
 }
