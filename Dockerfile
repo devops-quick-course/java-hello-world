@@ -17,7 +17,7 @@ RUN yum -y install java
 RUN java -version
 
 WORKDIR /opt/tomcat/webapps
-RUN wget -O http://localhost:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
+RUN wget -O /opt/tomcat/webapps/webapp.war http://localhost:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
 
 EXPOSE 8081
 
