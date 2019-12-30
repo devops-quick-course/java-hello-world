@@ -2,7 +2,11 @@
 FROM centos
 
 MAINTAINER Naval K Joshi
-
+# Install prepare infrastructure
+RUN yum -y update && \
+ yum -y install wget && \
+ yum -y install tar
+ 
 RUN mkdir /opt/tomcat/
 
 WORKDIR /opt/tomcat
