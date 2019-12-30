@@ -66,9 +66,9 @@ RUN tar -xvzf apache-tomcat-9.0.30.tar.gz
 RUN chmod +x ./apache-tomcat-9.0.30/bin/*sh
 
 # Create Tomcat admin user
-ADD create_admin_user.sh /opt/apache-tomcat-9.0.30/scripts/create_admin_user.sh
-ADD tomcat.sh /opt/apache-tomcat-9.0.30/scripts/tomcat.sh
-RUN chmod +x /opt/apache-tomcat-9.0.30/scripts/*.sh
+#ADD create_admin_user.sh /opt/apache-tomcat-9.0.30/scripts/create_admin_user.sh
+#ADD tomcat.sh /opt/apache-tomcat-9.0.30/scripts/tomcat.sh
+#RUN chmod +x /opt/apache-tomcat-9.0.30/scripts/*.sh
 
 # Create tomcat user
 RUN groupadd -r tomcat && \
