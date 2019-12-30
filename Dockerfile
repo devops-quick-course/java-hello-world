@@ -32,24 +32,50 @@ ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk/
 ENV TOMCAT_MAJOR 9
 ENV TOMCAT_VERSION 9.0.30
 
-RUN http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30-deployer.tar.gz && \
- tar -xvf apache-tomcat-9.0.30-deployer.tar.gz && \
+# RUN http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30-deployer.tar.gz
+#RUN tar -xvf apache-tomcat-9.0.30-deployer.tar.gz
  #rm apache-tomcat*.tar.gz && \
- mv apache-tomcat* ${CATALINA_HOME}
+#RUN mv apache-tomcat* ${CATALINA_HOME}
 
-RUN chmod +x ${CATALINA_HOME}/bin/*sh
+#RUN chmod +x ${CATALINA_HOME}/bin/*sh
 
 # Create Tomcat admin user
-ADD create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
-ADD tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
-RUN chmod +x $CATALINA_HOME/scripts/*.sh
+#ADD create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
+#ADD tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
+#RUN chmod +x $CATALINA_HOME/scripts/*.sh
+
+# Create tomcat user
+#RUN groupadd -r tomcat && \
+ #useradd -g tomcat -d ${CATALINA_HOME} -s /sbin/nologin  -c "Tomcat user" tomcat && \
+ #chown -R tomcat:tomcat ${CATALINA_HOME}
+
+#WORKDIR /opt/tomcat
+
+#EXPOSE 9091
+
+#USER tomcat
+#CMD ["tomcat.sh"] *#
+
+RUN cd /opt
+RUN wget  http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30.tar.gz
+RUN tar -xvzf apache-tomcat-9.0.30.tar.gz
+ #rm apache-tomcat*.tar.gz && \
+#RUN mkdir /opt/tomcat
+#RUN mv apache-tomcat* ${CATALINA_HOME}
+
+RUN chmod +x ./apache-tomcat-9.0.30/bin/*sh
+
+# Create Tomcat admin user
+ADD create_admin_user.sh /opt/apache-tomcat-9.0.30/scripts/create_admin_user.sh
+ADD tomcat.sh /opt/apache-tomcat-9.0.30/scripts/tomcat.sh
+RUN chmod +x /opt/apache-tomcat-9.0.30/scripts/*.sh
 
 # Create tomcat user
 RUN groupadd -r tomcat && \
- useradd -g tomcat -d ${CATALINA_HOME} -s /sbin/nologin  -c "Tomcat user" tomcat && \
- chown -R tomcat:tomcat ${CATALINA_HOME}
+ useradd -g tomcat -d /opt/apache-tomcat-9.0.30 -s /sbin/nologin  -c "Tomcat user" tomcat && \
+ chown -R tomcat:tomcat /opt/apache-tomcat-9.0.30
 
-WORKDIR /opt/tomcat
+WORKDIR /opt/apache-tomcat-9.0.30
 
 EXPOSE 9091
 
