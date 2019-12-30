@@ -6,7 +6,7 @@ MAINTAINER Naval K Joshi
 RUN mkdir /opt/tomcat/
 
 WORKDIR /opt/tomcat
-RUN curl -O http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30.tar.gz
+RUN wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30-deployer.tar.gz
 RUN tar -xvzf apache-tomcat-9.0.30.tar.gz
 RUN mv apache-tomcat-9.0.30/* /opt/tomcat/.
 RUN yum -y install java
