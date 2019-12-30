@@ -45,7 +45,12 @@ pipeline {
                 //bat 'curl -T "webapp.war" "http://tomcat:tomcat@localhost:9090/manager/deploy?path=/webapp" '
                  // bat 'copy C:\\Project\\devops_quick_course\\.war C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'
                   bat 'copy "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-Jenkinsfile\\webapp\\target\\*.war" C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'
-            }
-        }
+               }
+            }      
+                stage ('Docker Build') {
+                    steps {
+                        docker build -t tomcat:tomcat C:\Program Files (x86)\Jenkins\workspace\devops-quick-course-Jenkinsfile
+                    }
+              }
     }     
 }
