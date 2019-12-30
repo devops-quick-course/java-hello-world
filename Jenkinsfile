@@ -1,13 +1,13 @@
 pipeline {
     agent any
-    
+    options {
+    skipDefaultCheckout(true)
+     }
        tools {
                maven 'Maven'
                jdk 'default'
               }
-    options {
-    skipDefaultCheckout(true)
-     }
+    
     stages {
           stage ('Checkout') {
               steps {
