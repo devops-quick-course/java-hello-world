@@ -49,7 +49,7 @@ pipeline {
             }      
                 stage ('Docker Build') {
                     steps {
-                       bat 'docker build -t tomcat:tomcat C:\Program Files (x86)\Jenkins\workspace\devops-quick-course-Jenkinsfile'
+                       bat 'docker build -t tomcat:tomcat "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-Jenkinsfile" '
                     }
               }
     }     
