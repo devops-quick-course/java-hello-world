@@ -18,7 +18,7 @@ RUN java -version
 
 WORKDIR /opt/tomcat/webapps
 #RUN wget -O /opt/tomcat/webapps/webapp.war http://localhost:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
-RUN curl -k -u admin:password "http://docker.for.windows.localhost:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war"
-
+#RUN curl -k -u admin:password "http://docker.for.windows.localhost:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war"
+RUN wget --user=admin --password=password "http://localhost:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war"
 EXPOSE 8081
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
