@@ -9,7 +9,7 @@ pipeline {
               }
     
     stages {
-          stage ('Checkout') {
+          stage ('Checkout Stage') {
               steps {
                            git 'https://github.com/devops-quick-course/java-hello-world'
                     }
@@ -26,12 +26,12 @@ pipeline {
                     echo 'Now Archiving'
                 }
             }*/
-         stage ('Test') {
+         stage ('Test Stage') {
               steps {
                        bat 'mvn test'
                     }
               }
-            stage ('Artifactory Deploy'){
+            stage ('Artifactory upload'){
                 steps{
                   script {
                      def server = Artifactory.server('art-1')
@@ -44,14 +44,14 @@ pipeline {
                    }
                }
              }
-            stage ('Deploy Tomcat') {
+         /*  stage ('Deploy Tomcat') {
               steps {
                 //bat 'curl -T "webapp.war" "http://tomcat:tomcat@localhost:9090/manager/deploy?path=/webapp" '
                  // bat 'copy C:\\Project\\devops_quick_course\\.war C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'
                   bat 'copy "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-Jenkinsfile\\webapp\\target\\*.war" C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'
                }
-            }      
-                stage ('Docker Build') {
+            } */      
+                stage ('Docker Image Build') {
                     steps {
                        bat 'docker build -t tomcat:tomcat "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4" '
                     }
