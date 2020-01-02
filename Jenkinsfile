@@ -1,13 +1,13 @@
 pipeline {
-    agent any
-    options {
+     options {
     skipDefaultCheckout(true)
      }
-       tools {
+    agent any
+     tools {
                maven 'Maven'
                jdk 'default'
               }
-    
+   
     stages {
           stage ('Checkout Stage') {
               steps {
@@ -51,7 +51,7 @@ pipeline {
                   bat 'copy "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-Jenkinsfile\\webapp\\target\\*.war" C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'
                }
             } */      
-                stage ('Docker Image Build') {
+                stage ('Build Docker Image') {
                     steps {
                        bat 'docker build -t tomcat:tomcat "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4" '
                     }
