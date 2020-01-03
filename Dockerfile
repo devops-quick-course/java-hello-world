@@ -28,4 +28,4 @@ ENV PATH $CATALINA_HOME/bin:$PATH
 #RUN java -version
 
 EXPOSE 9090
-#CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
