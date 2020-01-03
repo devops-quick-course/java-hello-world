@@ -10,9 +10,9 @@ RUN yum -y update && \
 RUN mkdir /opt/tomcat/
 
 WORKDIR /opt/tomcat
-RUN wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30-deployer.tar.gz
-RUN tar -xvzf apache-tomcat-9.0.30-deployer.tar.gz
-RUN mv apache-tomcat-9.0.30-deployer/* /opt/tomcat/.
+RUN wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30.tar.gz
+RUN tar -xvzf apache-tomcat-9.0.30.tar.gz
+RUN mv apache-tomcat-9.0.30/* /opt/tomcat/
 RUN yum -y install java
 RUN java -version
 
@@ -21,7 +21,7 @@ WORKDIR /opt/tomcat/webapps
 RUN wget -o /opt/tomcat/webapps/webapp.war http://172.31.244.49:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
 #RUN curl -k -u admin:password "http://docker.for.windows.localhost:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war"
 #RUN wget --user=admin --password=password --network="localhost" "http://localhost:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war"
-RUN chmod +x /opt/tomcat/webapps/webapp.war
-RUN chmod +x /opt/tomcat/bin/catalina.sh
+#RUN chmod +x /opt/tomcat/webapps/webapp.war
+#RUN chmod +x /opt/tomcat/bin/catalina.sh
 EXPOSE 9090
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
