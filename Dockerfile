@@ -7,21 +7,27 @@ RUN yum -y update && \
  yum -y install wget && \
  yum -y install tar
  
-RUN mkdir /opt/tomcat/
-
-WORKDIR /opt/tomcat
-RUN wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30.tar.gz
-RUN tar -xvzf apache-tomcat-9.0.30.tar.gz
-RUN mv apache-tomcat-9.0.30/* /opt/tomcat/
-RUN yum -y install java
-RUN java -version
-
-WORKDIR /opt/tomcat/webapps
-
-RUN wget -o /opt/tomcat/webapps/webapp.war http://192.168.217.1:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
-#RUN curl -k -u admin:password "http://docker.for.windows.localhost:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war"
-#RUN wget --user=admin --password=password --network="localhost" "http://localhost:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war"
-#RUN chmod +x /opt/tomcat/webapps/webapp.war
-#RUN chmod +x /opt/tomcat/bin/catalina.sh
-EXPOSE 9090
-CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+RUN yum -y install sudo
+ 
+######## JDK7
+ 
+#Note that ADD uncompresses this tarball automatically
+ADD jdk-7u72-linux-x64.tar.gz /opt
+WORKDIR /opt/jdk1.7.0_72
+RUN alternatives --install /usr/bin/java java /opt/jdk1.7.0_72/bin/java 1
+RUN alternatives --install /usr/bin/jar jar /opt/jdk1.7.0_72/bin/jar 1
+RUN alternatives --install /usr/bin/javac javac /opt/jdk1.7.0_72/bin/javac 1
+RUN echo "JAVA_HOME=/opt/jdk1.7.0_72" >> /etc/environment
+ 
+######## TOMCAT
+ 
+#Note that ADD uncompresses this tarball automatically
+ADD apache-tomcat-7.0.57.tar.gz /usr/share
+WORKDIR /usr/share/
+RUN mv  apache-tomcat-7.0.57 tomcat7
+RUN echo "JAVA_HOME=/opt/jdk1.7.0_72/" >> /etc/default/tomcat7
+RUN groupadd tomcat
+RUN useradd -s /bin/bash -g tomcat tomcat
+RUN chown -Rf tomcat.tomcat /usr/share/tomcat7
+EXPOSE 8080
+#CMD ["/opt/tomcat/bin/catalina.sh", "run"]
