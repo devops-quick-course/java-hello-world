@@ -1,5 +1,5 @@
 # Pull base centos image and install tomcat on it
-FROM centos7
+FROM centos
 
 MAINTAINER Naval K Joshi
 # Install prepare infrastructure
