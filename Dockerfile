@@ -1,9 +1,12 @@
-FROM Centos
-MAINTAINER Naval K Joshi
+FROM centos
 
-# Install prepare infrastructure
-RUN yum -y update && \
- yum -y install wget && \
- yum -y install tar
- 
- CMD ["bin/bash/","run"]
+LABEL maintainer "Naval"
+
+RUN yum -y install httpd
+
+EXPOSE 80
+
+VOLUME /var/www/html
+
+ENTRYPOINT [ "/usr/sbin/httpd" ]
+CMD ["-D", "FOREGROUND"]
