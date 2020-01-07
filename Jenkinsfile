@@ -34,12 +34,16 @@ pipeline {
             stage ('Artifactory upload'){
                 steps{
                   script {
-                     def server = Artifactory.server('art-1')
-                     def rtMaven = Artifactory.newMavenBuild()
-                    //rtMaven.resolver server: server, releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot'
-                    rtMaven.deployer server: server, releaseRepo: 'devops-quick-course-snapshots', snapshotRepo: 'devops-quick-course-snapshots'
+                    def server = Artifactory.server('art-1')
+                    def buildInfo = Artifactory.newBuildInfo()
+                    buildInfo.env.capture = true  
+                    def rtMaven = Artifactory.newMavenBuild()
                     rtMaven.tool = 'Maven'
-                    def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install package'
+                    rtMaven.opts = "-Denv=dev"   
+                    rtMaven.resolver server: server, releaseRepo: 'devops-quick-course', snapshotRepo: 'devops-quick-course'
+                    rtMaven.deployer server: server, releaseRepo: 'devops-quick-course-snapshots', snapshotRepo: 'devops-quick-course-snapshots'
+                    
+                    def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install package', buildInfo: buildInfo
                      server.publishBuildInfo buildInfo
                    }
                }
