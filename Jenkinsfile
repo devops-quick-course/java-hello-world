@@ -60,5 +60,5 @@ pipeline {
                        bat 'docker build -t tomcat7:tomcat7 "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4" '
                     }
               } */
-    }     
+    }    
 }
