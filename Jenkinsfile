@@ -50,11 +50,11 @@ pipeline {
                  // bat 'copy C:\\Project\\devops_quick_course\\.war C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'
                   bat 'copy "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-Jenkinsfile\\webapp\\target\\*.war" C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'
                }
-            } */      
+            }       
                 stage ('Build Docker Image') {
                     steps {
                        bat 'docker build -t tomcat7:tomcat7 "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4" '
                     }
-              }
+              } */
     }     
 }
