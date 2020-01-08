@@ -68,8 +68,10 @@ pipeline {
             }   */
         stage ('Docker ECR push') {
             steps {
-          docker.withRegistry('https://295308319646.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:ecr_credential')
-          docker.image('webapp:webapp').push()
+                script {
+                         docker.withRegistry('https://295308319646.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:ecr_credential')
+                         docker.image('webapp:webapp').push()
+                } 
           }
         }         
 }
