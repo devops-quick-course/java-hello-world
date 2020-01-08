@@ -69,6 +69,7 @@ pipeline {
         stage ('Docker ECR push') {
             steps {
                 script {
+                        bat "eval \$(aws ecr get-login --no-include-email | sed 's|https://||')"
                         bat 'docker.withRegistry("https://295308319646.dkr.ecr.ap-south-1.amazonaws.com", "ecr:ap-south-1:ecr_credential")'
                         bat 'docker.image("webapp:webapp").push()'
                 } 
