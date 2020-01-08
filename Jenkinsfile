@@ -37,13 +37,14 @@ pipeline {
                     def server = Artifactory.server('art-1')
                     def buildInfo = Artifactory.newBuildInfo()
                     buildInfo.env.capture = true  
+                    buildInfo.env.collect()
                     def rtMaven = Artifactory.newMavenBuild()
                     rtMaven.tool = 'Maven'
                     rtMaven.opts = "-Denv=dev"   
-                    rtMaven.resolver server: server, releaseRepo: 'devops-quick-course', snapshotRepo: 'devops-quick-course'
-                    rtMaven.deployer server: server, releaseRepo: 'devops-quick-course-snapshots', snapshotRepo: 'devops-quick-course-snapshots'
+                    //rtMaven.resolver server: server, releaseRepo: 'devops-quick-course', snapshotRepo: 'devops-quick-course'
+                    rtMaven.deployer releaseRepo: 'devops-quick-course-snapshots', snapshotRepo: 'devops-quick-course-snapshots' , server: server
                     
-                    buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install package', buildInfo: buildInfo
+                    rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
                      server.publishBuildInfo buildInfo
                    }
                }
