@@ -31,7 +31,7 @@ pipeline {
                        bat 'mvn test'
                 }
             }
-          stage ('Artifactory upload'){
+         /* stage ('Artifactory upload'){
                 steps{
                   script {
                     def server = Artifactory.server('art-1')
@@ -49,7 +49,7 @@ pipeline {
                    }
                }
              }
-         /*  stage ('Deploy Tomcat') {
+           stage ('Deploy Tomcat') {
               steps {
                 //bat 'curl -T "webapp.war" "http://tomcat:tomcat@localhost:9090/manager/deploy?path=/webapp" '
                  // bat 'copy C:\\Project\\devops_quick_course\\.war C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'
@@ -61,10 +61,16 @@ pipeline {
                        bat 'docker build -t webapp:webapp "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4" '
                     }
               }
-         stage ('Run Docker Container') {
+              /*  stage ('Run Docker Container') {
                     steps {
                       bat 'docker run -it -d -p 9091:8080 webapp:webapp'
-                    }
-    }    
+                } 
+            }   */
+        stage ('Docker ECR push') {
+            steps {
+          bat 'docker.withRegistry('https://ap-south-1.console.aws.amazon.com/ecr/repositories/devops-quick-course-repo/', 'ecr:ap-south-1:ecr_credential')' 
+          bat 'docker.image('webapp').push('webapp')'
+          }
+        }         
 }
 }
