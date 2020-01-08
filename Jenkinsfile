@@ -71,7 +71,7 @@ pipeline {
                 script {
                         //bat "eval \$(aws ecr get-login --no-include-email | sed 's|https://||')"
                         docker.withRegistry("https://295308319646.dkr.ecr.ap-south-1.amazonaws.com", "ecr:ap-south-1:ecr_credential") {
-                        bat 'docker.image("webapp:webapp").push()'
+                        docker.image("webapp:webapp").push()
                     //bat '$(aws ecr get-login --no-include-email --region ap-south-1)'
                     //bat 'docker tag webapp:webapp 295308319646.dkr.ecr.ap-south-1.amazonaws.com/webapp:webapp'
                     //bat 'docker push 295308319646.dkr.ecr.ap-south-1.amazonaws.com/webapp:webapp'
