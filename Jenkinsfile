@@ -43,7 +43,7 @@ pipeline {
                     rtMaven.resolver server: server, releaseRepo: 'devops-quick-course', snapshotRepo: 'devops-quick-course'
                     rtMaven.deployer server: server, releaseRepo: 'devops-quick-course-snapshots', snapshotRepo: 'devops-quick-course-snapshots'
                     
-                    def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install package', buildInfo: buildInfo
+                    buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install package', buildInfo: buildInfo
                      server.publishBuildInfo buildInfo
                    }
                }
