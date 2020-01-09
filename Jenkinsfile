@@ -6,7 +6,7 @@ pipeline {
      tools {
                maven 'Maven'
                jdk 'default'
-               terraform 'Terraform' 
+               Terraform 'Terraform' 
            }
    
     stages {
