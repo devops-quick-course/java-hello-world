@@ -79,6 +79,6 @@ pipeline {
                 bat 'terraform init'
                 bat 'terraform apply'
             }
-          }          
+                    
        }
 }
