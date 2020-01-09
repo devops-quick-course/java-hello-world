@@ -6,7 +6,6 @@ pipeline {
      tools {
                maven 'Maven'
                jdk 'default'
-               Terraform 'terraform' 
            }
    
     stages {
@@ -76,7 +75,7 @@ pipeline {
                   } 
               }
         }
-          
+            //env tfhome = tool name: 'Terraform'
             stage ('Terraform EC2 launch') {
                 steps {
                     bat 'terraform init'
