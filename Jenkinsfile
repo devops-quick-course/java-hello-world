@@ -74,6 +74,7 @@ pipeline {
                      }
                   } 
               }
+        }
             stage ('Terraform EC2 launch') {
                 bat 'terraform init'
                 bat 'terraform apply'
