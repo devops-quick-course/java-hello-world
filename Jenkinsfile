@@ -78,7 +78,7 @@ pipeline {
             //env tfhome = tool name: 'Terraform'C:\Software\terraform_0.12.8_windows_amd64
             stage ('Terraform EC2 launch') {
                 steps {
-                    cd "C:\Software\terraform_0.12.8_windows_amd64\"
+                    //cd "C:\Software\terraform_0.12.8_windows_amd64\"
                     bat 'terraform init'
                     bat 'terraform apply'
                 }     
