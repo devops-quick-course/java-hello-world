@@ -7,7 +7,11 @@ pipeline {
                maven 'Maven'
                jdk 'default'
            }
-   
+    environmet {
+    ACCOUNT_KEY = credentials('key')
+    ACCOUNT_sKEY = credentials('sKey')    
+    }
+    
     stages {
           stage ('Checkout Stage') {
               steps {
@@ -58,8 +62,10 @@ pipeline {
             }*/       
                 stage ('Build Docker Image') {
                     steps {
+                        script {
                        bat 'docker build -t webapp:webapp "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day5" '
                     }
+                  }      
               }
               /*  stage ('Run Docker Container') {
                     steps {
