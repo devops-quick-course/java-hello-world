@@ -7,10 +7,10 @@ pipeline {
                maven 'Maven'
                jdk 'default'
            }
-    environmet {
-    ACCOUNT_KEY = credentials('key')
-    ACCOUNT_sKEY = credentials('sKey')    
-    }
+   // environmet {
+   // ACCOUNT_KEY = credentials('key')
+   // ACCOUNT_sKEY = credentials('sKey')    
+  //  }
     
     stages {
           stage ('Checkout Stage') {
