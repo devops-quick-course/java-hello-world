@@ -31,7 +31,7 @@ pipeline {
                        bat 'mvn test'
                 }
             }
-          stage ('Artifactory upload'){
+         /* stage ('Artifactory upload'){
                 steps{
                   script {
                     def server = Artifactory.server('art-1')
@@ -48,7 +48,7 @@ pipeline {
                      server.publishBuildInfo buildInfo
                    }
                }
-             }
+             } */
          /*  stage ('Deploy Tomcat') {
               steps {
                 //bat 'curl -T "webapp.war" "http://tomcat:tomcat@localhost:9090/manager/deploy?path=/webapp" '
