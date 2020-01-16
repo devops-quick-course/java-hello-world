@@ -2,10 +2,10 @@
 # t2.micro node with an AWS Tag naming it "HelloWorld"
 
 provider "aws" {
- $ export AWS_ACCESS_KEY_ID="key"
- $ export AWS_SECRET_ACCESS_KEY="skey"
- $ export AWS_DEFAULT_REGION="ap-south-1"
- $ terraform plan
+ environment { 
+                AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY')
+                AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+            }
  # region     = "ap-south-1"
 }
 
