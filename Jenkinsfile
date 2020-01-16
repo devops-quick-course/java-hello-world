@@ -1,17 +1,13 @@
 pipeline {
     options {
          skipDefaultCheckout(true)
-      }
+     }
     agent any
      tools {
                maven 'Maven'
                jdk 'default'
            }
-   // environmet {
-   // ACCOUNT_KEY = credentials('key')
-   // ACCOUNT_sKEY = credentials('sKey')    
-  //  }
-    
+   
     stages {
           stage ('Checkout Stage') {
               steps {
@@ -35,7 +31,7 @@ pipeline {
                        bat 'mvn test'
                 }
             }
-         /* stage ('Artifactory upload'){
+          stage ('Artifactory upload'){
                 steps{
                   script {
                     def server = Artifactory.server('art-1')
@@ -53,7 +49,7 @@ pipeline {
                    }
                }
              }
-           stage ('Deploy Tomcat') {
+         /*  stage ('Deploy Tomcat') {
               steps {
                 //bat 'curl -T "webapp.war" "http://tomcat:tomcat@localhost:9090/manager/deploy?path=/webapp" '
                  // bat 'copy C:\\Project\\devops_quick_course\\.war C:\\Software\\apache-tomcat-9.0.30-windows-x64\\apache-tomcat-9.0.30\\webapps\\'
@@ -62,16 +58,14 @@ pipeline {
             }*/       
                 stage ('Build Docker Image') {
                     steps {
-                        script {
-                       bat 'docker build -t webapp:webapp "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day5" '
+                       bat 'docker build -t webapp:webapp "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4" '
                     }
-                  }      
               }
-              /*  stage ('Run Docker Container') {
+         stage ('Run Docker Container') {
                     steps {
                       bat 'docker run -it -d -p 9091:8080 webapp:webapp'
-                } 
-            }   */
+                    }
+               } 
         stage ('Docker ECR push') {
             steps {
                 script {
@@ -88,6 +82,6 @@ pipeline {
                     bat 'terraform init'
                     bat 'terraform apply'
                 }     
-            }    */           
-       }
+            }    */  
+    }   
 }
