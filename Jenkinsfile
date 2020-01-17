@@ -61,7 +61,7 @@ pipeline {
                         script {
                        //bat 'docker build -t webapp:webapp "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4" '
                        //bat label: '', script: 'docker build -t webapp:webapp "C:\\\\Program Files (x86)\\\\Jenkins\\\\workspace\\\\devops-quick-course-dockerfile-day4'
-                          C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell label: '', script: 'docker build -t webapp:webapp "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4"'
+                          C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell label: '', script: 'docker build -t webapp:webapp "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4" '
                         }
                   }      
               }
