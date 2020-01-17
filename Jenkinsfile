@@ -59,8 +59,9 @@ pipeline {
                 stage ('Build Docker Image') {
                     steps {
                         script {
-                       bat 'docker build -t webapp:webapp "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4" '
-                    }
+                       //bat 'docker build -t webapp:webapp "C:\\Program Files (x86)\\Jenkins\\workspace\\devops-quick-course-dockerfile-day4" '
+                       powershell label: '', script: 'docker build -t webapp:webapp "C:\\\\Program Files (x86)\\\\Jenkins\\\\workspace\\\\devops-quick-course-dockerfile-day4'
+                        }
                   }      
               }
          stage ('Run Docker Container') {
