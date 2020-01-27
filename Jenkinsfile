@@ -14,7 +14,8 @@ pipeline {
               steps {
                     //cd "C:\Software\terraform_0.12.8_windows_amd64\"
                     bat 'terraform init'
-                    bat 'terraform apply'
+                    bat 'terraform plan -out=plan'
+                    bat 'terraform apply plan'
                  }     
             }      
       }   
