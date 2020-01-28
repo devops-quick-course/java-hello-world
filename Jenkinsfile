@@ -1,3 +1,5 @@
+ def access_key = "${env.AWS_ACCESS_KEY_ID}"
+ def secret_key = "${env.AWS_SECRET_ACCESS_KEY}"
 pipeline {
     options {
          skipDefaultCheckout(true)
@@ -10,8 +12,7 @@ pipeline {
    
     stages {
            //env tfhome = tool name: 'Terraform'C:\Software\terraform_0.12.8_windows_amd64
-        def access_key = "${env.AWS_ACCESS_KEY_ID}"
-        def secret_key = "${env.AWS_SECRET_ACCESS_KEY}"
+       
         
            stage ('Terraform EC2 launch') {
               steps {
