@@ -2,8 +2,8 @@
 # t2.micro node with an AWS Tag naming it "HelloWorld"
 
 provider "aws" {
-  access_key =  "${var.AWS_ACCESS_KEY}"
-  secreat_key =  "${var.AWS_SECRET_ACCESS_KEY}" 
+  access_key =  "${env.AWS_ACCESS_KEY}"
+  secreat_key =  "${env.AWS_SECRET_ACCESS_KEY}" 
   region     = "ap-south-1"
 }
 
