@@ -16,7 +16,7 @@ pipeline {
                     bat 'terraform init'
                     //bat 'terraform plan -out=plan'
                     //bat 'terraform apply plan'
-                  bat 'terraform plan -out=plan -var "access_key=${env.AWS_ACCESS_KEY_ID}" -var "secret_key=${env.AWS_SECRET_ACCESS_KEY}"' 
+                  bat 'terraform plan -out=plan -var "access_key=$aws_key"' 
                  }     
             }      
       }   
