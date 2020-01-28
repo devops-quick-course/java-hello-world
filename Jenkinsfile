@@ -2,9 +2,6 @@ pipeline {
     options {
          skipDefaultCheckout(true)
      }
-    parameters {
-  credentials credentialType: 'com.cloudbees.jenkins.plugins.awscredentials.AWSCredentialsImpl', defaultValue: 'aws_key', description: '', name: 'awsCredentials', required: false
-}
     agent any
      tools {
                maven 'Maven'
@@ -17,8 +14,9 @@ pipeline {
               steps {
                     //cd "C:\Software\terraform_0.12.8_windows_amd64\"
                     bat 'terraform init'
-                    bat 'terraform plan -out=plan'
-                    bat 'terraform apply plan'
+                    //bat 'terraform plan -out=plan'
+                    //bat 'terraform apply plan'
+                  bat 'terraform plan -out=plan -var "access_key=${env.AWS_ACCESS_KEY_ID}" -var "secret_key=${env.AWS_SECRET_ACCESS_KEY}"' 
                  }     
             }      
       }   
