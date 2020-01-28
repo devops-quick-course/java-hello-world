@@ -16,7 +16,7 @@ pipeline {
         
            stage ('Terraform EC2 launch') {
               steps {
-               scripts {
+               script {
                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                  //cd "C:\Software\terraform_0.12.8_windows_amd64\"
                       bat 'terraform init'
