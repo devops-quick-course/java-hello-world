@@ -2,10 +2,9 @@ pipeline {
     options {
          skipDefaultCheckout(true)
      }
-    environment {
-        access_key = "${env.AWS_ACCESS_KEY_ID}"
-        secret_key = "${env.AWS_SECRET_ACCESS_KEY}"
-    }
+    parameters {
+  credentials credentialType: 'com.cloudbees.jenkins.plugins.awscredentials.AWSCredentialsImpl', defaultValue: 'aws_key', description: '', name: 'awsCredentials', required: false
+}
     agent any
      tools {
                maven 'Maven'
