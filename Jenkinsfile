@@ -21,7 +21,7 @@ pipeline {
                       //bat 'terraform init'
                       //bat 'terraform plan -out=plan'
                       //bat 'terraform apply plan'
-                       bat 'terraform destroy'
+                       bat 'terraform destroy -auto-approve'
                       }
                    }
                  }     
