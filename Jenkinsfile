@@ -47,7 +47,7 @@
                         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         //docker.withRegistry("https://295308319646.dkr.ecr.ap-south-1.amazonaws.com", "ecr:ap-south-1:ecr_credential") {
                         //docker.image("webapp:webapp").push()
-                       bat  'aws ecr get-login --no-include-email --region ap-south-1 > docker_login.ps1'
+                       bat  'aws2 ecr get-login --no-include-email --region ap-south-1 > docker_login.ps1'
                        bat 'powershell -command ./docker_login.ps1'  
                        bat 'docker tag webapp:webapp 295308319646.dkr.ecr.ap-south-1.amazonaws.com/webapp:webapp'
                        bat 'docker push 295308319646.dkr.ecr.ap-south-1.amazonaws.com/webapp:webapp'
