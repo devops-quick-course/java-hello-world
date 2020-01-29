@@ -43,7 +43,7 @@
                } */ 
         stage ('Docker ECR push') {
             steps {
-                script {
+                script { 
                         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         //docker.withRegistry("https://295308319646.dkr.ecr.ap-south-1.amazonaws.com", "ecr:ap-south-1:ecr_credential") {
                         //docker.image("webapp:webapp").push()
