@@ -51,7 +51,7 @@
                        //bat 'powershell -command ./docker_login.ps1'  
                        //bat 'docker tag webapp:webapp 295308319646.dkr.ecr.ap-south-1.amazonaws.com/webapp:webapp'
                        //bat 'docker push 295308319646.dkr.ecr.ap-south-1.amazonaws.com/webapp:webapp'
-                     
+                        }
                   } 
               }
         }
