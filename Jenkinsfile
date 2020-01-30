@@ -55,17 +55,17 @@
                   } 
               }
         }
-          /*  stage ('Terraform EC2 launch') {
+            stage ('Terraform EC2 launch') {
               steps {
                script {
                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                       bat 'terraform init' // Initialize provider 
                       bat 'terraform plan -out=plan' // Create plan before apply it 
                       bat 'terraform apply plan'
-                      bat 'terraform destroy -force' // remove created infrastructure forcefully (won't ask for input yes before destroy)
+                      //bat 'terraform destroy -force' // remove created infrastructure forcefully (won't ask for input yes before destroy)
                       }
                    }
                  }     
-            } */     
+            }    
     }   
 }
