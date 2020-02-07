@@ -28,12 +28,13 @@ Run chown -R tomcat /opt/tomcat/webapps /opt/tomcat/work /opt/tomcat/temp opt/to
 Run cd /opt/tomcat/webapps
 
 #RUN wget -o /opt/tomcat/webapps/webapp.war http://172.24.65.209:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
-RUN cd /opt/tomcat/webapps;wget http://172.24.65.209:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
-RUN mv  /opt/tomcat/webapps/webapp-1.0-SNAPSHOT.war /opt/tomcat/webapps/webapp.war; chmod 755 /opt/tomcat/webapps/webapp.war 
+#RUN cd /opt/tomcat/webapps;wget http://172.24.65.209:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
+#RUN cd /opt/tomcat/webapps;wget http://172.24.65.209:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
+#RUN mv  /opt/tomcat/webapps/webapp-1.0-SNAPSHOT.war /opt/tomcat/webapps/webapp.war; chmod 755 /opt/tomcat/webapps/webapp.war 
 # copy application code from local webapp-1.0-SNAPSHOT to container 
-#COPY ./webapp.war  /opt/tomcat/webapps/ 
+ COPY ./webapp.war  /opt/tomcat/webapps/ 
 
-Expose 9091
+Expose 9090
 
 #CMD /opt/tomcat/bin/catalina.sh run && tail -f /opt/tomcat/logs/catalina.out
 
