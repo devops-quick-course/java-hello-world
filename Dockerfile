@@ -32,7 +32,7 @@ Run cd /opt/tomcat/webapps
 #RUN cd /opt/tomcat/webapps;wget http://172.24.65.209:8040/artifactory/devops-quick-course-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
 #RUN mv  /opt/tomcat/webapps/webapp-1.0-SNAPSHOT.war /opt/tomcat/webapps/webapp.war; chmod 755 /opt/tomcat/webapps/webapp.war 
 # copy application code from local webapp-1.0-SNAPSHOT to container 
- COPY ./webapp.war  /opt/tomcat/webapps/ 
+ COPY C:\Software\Jenkins\workspace\AWS_Infra_Launch\webapp\target\webapp.war  /opt/tomcat/webapps/ 
 
 Expose 9090
 
